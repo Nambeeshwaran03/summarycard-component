@@ -57,5 +57,3 @@ jobs:
           sonar.sources: component4/src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-
