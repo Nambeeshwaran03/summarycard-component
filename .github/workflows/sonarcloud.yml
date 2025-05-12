@@ -21,6 +21,18 @@ jobs:
         run: |
           ls -l /home/runner/work/summarycard-component/summarycard-component
 
+      # Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adoptopenjdk'
+
+      # Check Java version to confirm it's set up correctly
+      - name: Check Java version
+        run: java -version
+
+      # Cache Node.js dependencies
       - name: Cache Node.js dependencies
         uses: actions/cache@v3
         with:
@@ -29,12 +41,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      # Install Node.js dependencies
       - name: Install dependencies
         run: |
           cd component4
           npm install
 
+      # Run SonarCloud scan
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1
+        with:
+          sonar-project-key: Nambeeshwaran03_summarycard-component
+          sonar-organization: nambeeshwaran03
+          sonar-host-url: https://sonarcloud.io
+          sonar.sources: component4/src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
