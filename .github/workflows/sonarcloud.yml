@@ -17,6 +17,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List files in the root directory (debugging)
+        run: |
+          ls -l /home/runner/work/summarycard-component/summarycard-component
+
       - name: Cache Node.js dependencies
         uses: actions/cache@v3
         with:
@@ -29,13 +33,7 @@ jobs:
         run: |
           npm install
 
-      - name: Check node_modules existence
-        run: |
-          ls -l node_modules
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-
