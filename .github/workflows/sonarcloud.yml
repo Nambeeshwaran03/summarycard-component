@@ -24,13 +24,14 @@ jobs:
       - name: Cache Node.js dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: component4/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('component4/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: |
+          cd component4
           npm install
 
       - name: SonarCloud Scan
