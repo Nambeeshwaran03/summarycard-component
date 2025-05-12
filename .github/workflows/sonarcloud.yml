@@ -21,12 +21,12 @@ jobs:
         run: |
           ls -l /home/runner/work/summarycard-component/summarycard-component
 
-      # Set up JDK 17
+      # Set up JDK 17 using the temurin distribution
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adoptopenjdk'
+          distribution: 'temurin'
 
       # Check Java version to confirm it's set up correctly
       - name: Check Java version
@@ -57,3 +57,4 @@ jobs:
           sonar.sources: component4/src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
