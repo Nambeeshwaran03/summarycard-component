@@ -23,18 +23,19 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         with:
           projectBaseDir: ./component4
-          args: -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
-            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.projectVersion=1.0 \
-            -Dsonar.sourceEncoding=UTF-8 \
-            -Dsonar.sources=./src \
-            -Dsonar.exclusions=**/reportWebVitals.ts,**/index.tsx \
-            -Dsonar.tests=./src \
-            -Dsonar.test.inclusions=**/*.test.tsx,**/*.test.ts \
-            -Dsonar.test.exclusions=**/node_modules/**,**/*.spec.ts,**/*.stories.tsx,**/services/**,coverage/** \
-            -Dsonar.language=ts \
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info \
+          args: >-
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }}
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.projectVersion=1.0
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.sources=./src
+            -Dsonar.exclusions=**/reportWebVitals.ts,**/index.tsx
+            -Dsonar.tests=./src
+            -Dsonar.test.inclusions=**/*.test.tsx,**/*.test.ts
+            -Dsonar.test.exclusions=**/node_modules/**,**/*.spec.ts,**/*.stories.tsx,**/services/**,coverage/**
+            -Dsonar.language=ts
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.branch.name=main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
