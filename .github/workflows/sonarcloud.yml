@@ -1,22 +1,31 @@
 name: Build
+
 on:
   push:
     branches:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - "component4/**"
+
 jobs:
   sonarqube:
     name: SonarQube
     runs-on: windows-latest
-    steps: 
+
+    steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # For better analysis
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectBaseDir: ./component4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
 
 
