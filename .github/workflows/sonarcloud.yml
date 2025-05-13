@@ -25,7 +25,7 @@ jobs:
           projectBaseDir: ./component4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: nambeeshwaran03_summarycard-component
+          SONAR_PROJECT_KEY: Nambeeshwaran03_summarycard-component
           SONAR_ORGANIZATION: nambeeshwaran03
 
 
