@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
@@ -36,7 +36,7 @@ jobs:
             -Dsonar.test.exclusions=**/node_modules/**,**/*.spec.ts,**/*.stories.tsx,**/services/**,coverage/**
             -Dsonar.language=ts
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.branch.name=main
+            
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_PROJECT_KEY: Nambeeshwaran03_summarycard-component
